@@ -5,8 +5,9 @@ import 'package:untitled5/page/BeautyTips.dart';
 import 'package:untitled5/page/BestSeller.dart';
 import 'package:untitled5/page/Categoties.dart';
 import 'package:untitled5/page/Promotions.dart';
+import 'package:untitled5/page/attraction_screen.dart';
 import 'package:untitled5/page/search_page.dart';
-import 'package:untitled5/page/ProductDetailPage.dart'; // Import ProductDetailPage
+import 'package:untitled5/page/attraction_detail_screen.dart'; // Import ProductDetailPage
 
 import 'package:untitled5/services/api_service.dart';
 
@@ -58,15 +59,15 @@ class _HomePage1State extends State<HomePage1> {
     });
   }
 
-void _onSearch() {
-  String query = _searchController.text;
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => SearchPage(), // ไม่ใช้ const []
-    ),
-  );
-}
+  void _onSearch() {
+    String query = _searchController.text;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SearchPage(), // ไม่ใช้ const []
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +193,13 @@ void _onSearch() {
             IconButton(
               icon: Icon(Icons.arrow_forward),
               onPressed: () {
-                Navigator.pushNamed(context, '/bestsellers');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        AttractionDetailScreen(id: 'best_sellers'),
+                  ),
+                );
               },
             ),
           ],
@@ -240,7 +247,12 @@ void _onSearch() {
             IconButton(
               icon: Icon(Icons.arrow_forward),
               onPressed: () {
-                Navigator.pushNamed(context, '/makeup');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductScreen(id: 1),
+                  ),
+                );
               },
             ),
           ],
@@ -295,7 +307,7 @@ void _onSearch() {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ProductDetailPage(id: item['_id']),
+              builder: (context) => AttractionDetailScreen(id: item['_id']),
             ),
           );
         },
@@ -358,7 +370,8 @@ void _onSearch() {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ProductDetailPage(id: item['_id']),
+                      builder: (context) =>
+                          AttractionDetailScreen(id: item['_id']),
                     ),
                   );
                 },

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:math';
 
 class ProductPage extends StatelessWidget {
   final String promotion;
@@ -9,10 +8,13 @@ class ProductPage extends StatelessWidget {
   const ProductPage({Key? key, required this.promotion}) : super(key: key);
 
   Future<List<dynamic>> fetchProducts() async {
-    final responseProduct = await http.get(Uri.parse('http://localhost:5001/api/product'));
-    final responseSkincare = await http.get(Uri.parse('http://localhost:5001/api/skincare'));
+    final responseProduct =
+        await http.get(Uri.parse('http://localhost:5002/api/product'));
+    final responseSkincare =
+        await http.get(Uri.parse('http://localhost:5002/api/skincare'));
 
-    if (responseProduct.statusCode == 200 && responseSkincare.statusCode == 200) {
+    if (responseProduct.statusCode == 200 &&
+        responseSkincare.statusCode == 200) {
       final products = json.decode(responseProduct.body);
       final skincare = json.decode(responseSkincare.body);
       final allProducts = [...products, ...skincare];
@@ -29,7 +31,8 @@ class ProductPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Product for $promotion'),
         backgroundColor: Color(0xFF77407F),
-        titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        titleTextStyle: TextStyle(
+            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
       ),
       body: FutureBuilder<List<dynamic>>(
         future: fetchProducts(),
@@ -48,13 +51,13 @@ class ProductPage extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
-                childAspectRatio: 0.7, // เพิ่มความสูงให้ภาพใหญ่ขึ้น
+                childAspectRatio: 0.7,
               ),
               itemCount: products.length,
               itemBuilder: (context, index) {
                 return Card(
                   elevation: 5,
-                  color: Colors.white, // เปลี่ยนสีกรอบเป็นสีขาว
+                  color: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -62,7 +65,6 @@ class ProductPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      // เพิ่มขนาดภาพ
                       ClipRRect(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10.0),
@@ -80,7 +82,7 @@ class ProductPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 10), // เพิ่มช่องว่างระหว่างภาพกับข้อความ
+                      SizedBox(height: 10),
                       // ชื่อสินค้า
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),

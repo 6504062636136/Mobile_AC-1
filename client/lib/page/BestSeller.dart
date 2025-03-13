@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled5/services/api_service.dart';
-import 'package:untitled5/page/ProductDetailPage.dart'; // Import หน้ารายละเอียดสินค้า
+import 'package:untitled5/page/attraction_detail_screen.dart'; // Import หน้ารายละเอียดสินค้า
 import 'package:untitled5/page/HomePage.dart'; // Import HomePage
 
 class BestSellersPage extends StatelessWidget {
@@ -90,7 +90,7 @@ class BestSellersPage extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProductDetailPage(id: id),  // ส่ง id ไปที่ ProductDetailPage
+            builder: (context) => AttractionDetailScreen(id: id),  // ส่ง id ไปที่ ProductDetailPage
           ),
         );
       },

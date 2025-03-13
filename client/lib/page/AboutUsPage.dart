@@ -92,41 +92,37 @@ class AboutUsPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 20.0,
+                      runSpacing: 10.0,
                       children: <Widget>[
-                        // Icon Facebook
-                        IconButton(
-                          icon: Icon(
-                            Icons.facebook,
-                            color: Colors.blue,
-                            size: 40,
-                          ),
-                          onPressed: () {
-                            //TODO: Implement Link Facebook
-                          },
-                        ),
-                        Text(
-                          'GLAMORA',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        SizedBox(width: 50),
-
-                        // Icon Line
-                        IconButton(
-                            icon: Image.asset(
-                              'assets/images/line_logo.png',
-                              width: 40,
-                              height: 40,
+                        Column(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.facebook,
+                                color: Colors.blue,
+                                size: 40,
+                              ),
+                              onPressed: () {
+                                // TODO: Implement Link Facebook
+                              },
                             ),
-                            onPressed: () {
-                              //TODO: Implement Link Line
-                            }),
-                        Text(
-                          '@GLAMORA',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
+                            Text(
+                              'GLAMORA',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+
+
+                          ],
                         ),
                       ],
                     ),

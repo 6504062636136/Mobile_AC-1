@@ -17,15 +17,22 @@ router.get('/', async (req, res) => {
 
 router.post('/create', async (req, res) => {
     try {
-        const newCartItem = new Cart(req.body);
-        console.log(newCartItem,"new")
+        console.log("🛒 Data Received:", req.body);  // ✅ Debugging
+
+        // สร้างสินค้าใหม่ในตะกร้า
+        const newCartItem = new Cart({
+            name: req.body.name,  // ชื่อสินค้า
+            quantity: req.body.quantity,  // จำนวนสินค้า
+            price: req.body.price,  // ราคา
+            type: req.body.type,  // ประเภท
+            image: req.body.image  // URL รูปภาพ
+        });
         await newCartItem.save();
         res.status(201).json(newCartItem);
     } catch (error) {
         res.status(500).json({ message: 'เกิดข้อผิดพลาดในการเพิ่มสินค้าในตะกร้า', error });
     }
 });
-
 
 router.put('/:id', async (req, res) => {
     try {

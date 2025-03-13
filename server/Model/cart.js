@@ -1,23 +1,11 @@
-//แก้ไข
 const mongoose = require('mongoose');
 
 const cartSchema = new mongoose.Schema({
-    name: { type: String, ref: 'Bestseller', required: true },
-    quantity: { type: Number, required: true, min: 1 },
-    price:{
-        type: Number,
-    },
-    type: {
-        type: String,
-    },
-    image:{
-        type: String,
-    },
-
-},
-
-{ timestamps: true });
-
-
+    name: { type: String, required: true },  // ชื่อสินค้า
+    quantity: { type: Number, required: true, min: 1 },  // จำนวน
+    price: { type: Number },  // ราคา
+    type: { type: String },  // ประเภทสินค้า
+    image: { type: String }  // URL รูปภาพ
+}, { timestamps: true });
 
 module.exports = mongoose.model('Cart', cartSchema);

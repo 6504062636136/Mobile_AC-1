@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:untitled5/page/FavoritePage.dart';
 import 'HomePage.dart';
 import 'Setting.dart';
 import 'EditProfile.dart';
 import 'EditPic.dart';
-//import 'Cart.dart'; // Import CartPage
+import 'Cart.dart';
 
 class MyProfilePage extends StatelessWidget {
   @override
@@ -191,14 +192,19 @@ class ProfileMenuItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: InkWell(
         onTap: () {
-        //  if (routeName == '/mycart') {
-        //    Navigator.push(
-              //context,
-           //   MaterialPageRoute(builder: (context) => CartPage()),
-          //  );
-         // } else {
-          //  Navigator.pushNamed(context, routeName);
-          //}
+          if (routeName == '/mycart') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CartPage()),
+            );
+          } else if (routeName == '/mylist') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => FavoritePage()),
+            );
+          } else {
+            Navigator.pushNamed(context, routeName);
+          }
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

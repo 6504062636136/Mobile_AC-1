@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ProductPage.dart';
- // นำเข้าหน้า ProductPage
+import 'ProductPage.dart';  // นำเข้าหน้า ProductPage
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -34,14 +33,14 @@ class PromotionsPage extends StatelessWidget {
             SizedBox(width: 10),
             Text(
               "Promotions",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold,color: Colors.white),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ],
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: ListView(  // ใช้ ListView แทน Column
           children: promotions
               .map((promo) => _buildPromoCard(context, promo))
               .toList(),
