@@ -15,7 +15,7 @@ class _OrderPageState extends State<OrderPage> {
   @override
   void initState() {
     super.initState();
-    fetchCartItems(); // เรียกใช้ฟังก์ชัน fetchCartItems อย่างถูกต้อง
+    fetchCartItems();
   }
 
   // ดึงข้อมูล Cart จาก API
@@ -24,10 +24,10 @@ class _OrderPageState extends State<OrderPage> {
       final response = await http.get(Uri.parse('http://localhost:5002/api/cart'));
 
       if (response.statusCode == 200) {
-        // แปลงข้อมูล JSON ที่ได้รับจาก API
+
         final List<dynamic> data = json.decode(response.body);
         setState(() {
-          _orders = data;  // เก็บข้อมูลคำสั่งซื้อใน _orders
+          _orders = data;
         });
       } else {
         print('Failed to load cart items: ${response.statusCode}');
@@ -35,7 +35,7 @@ class _OrderPageState extends State<OrderPage> {
       }
     } catch (e) {
       print('Error: $e');
-      // สามารถแสดงข้อความข้อผิดพลาดกรณีไม่สามารถเชื่อมต่อกับ API ได้
+
     }
   }
 
